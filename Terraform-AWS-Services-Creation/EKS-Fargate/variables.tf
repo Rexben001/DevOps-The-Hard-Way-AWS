@@ -1,14 +1,14 @@
 variable "subnet_id_1" {
   type = string
-  default = "subnet-0724276a66ddfe51e"
+  default = "subnet-00e094425ac1d81b3"
 }
 
 variable "subnet_id_2" {
   type = string
-  default = "subnet-0bc007da6e373a517"
+  default = "subnet-021e149aa568fdf5b"
 }
 
 variable "private_subnet_id_1" {
   type = string
-  default = "subnet-0a18be575c2cd0968"
+  default = "subnet-01fd8b9e1f3f84016"
 }
