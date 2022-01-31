@@ -1,7 +1,7 @@
 name: CI
 
-on:
-  workflow_dispatch:
+# on:
+#   workflow_dispatch:
 
 jobs:
   build:
@@ -21,20 +21,20 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
-        working-directory: Terraform-AWS-Services/EKS-Fargate
+        working-directory: ./Terraform-AWS-Services/EKS-Fargate
         run: |
           terraform init \
             -backend-config "bucket=terraform-state-rexben" \
             -backend-config "key=rexben-terraform.tfstate"
           terraform workspace new dev || terraform workspace select dev
       - name: Terraform Format
-        working-directory: Terraform-AWS-Services/EKS-Fargate
+        working-directory: ./Terraform-AWS-Services/EKS-Fargate
         run: terraform fmt
 
       - name: Terraform Plan
-        working-directory: Terraform-AWS-Services/EKS-Fargate
+        working-directory: ./Terraform-AWS-Services/EKS-Fargate
         run: terraform plan -var="environment=development" -var="elasticsearch_password=${{ secrets.ELASTICSEARCH_PASSWORD }}"
 
       - name: Terraform Apply
-        working-directory: Terraform-AWS-Services/EKS-Fargate
+        working-directory: ./Terraform-AWS-Services/EKS-Fargate
         run: terraform apply -var="environment=development" -var="elasticsearch_password=${{ secrets.ELASTICSEARCH_PASSWORD }}" -auto-approve
