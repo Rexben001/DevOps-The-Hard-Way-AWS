@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-state-devopsthehardway"
+    bucket = "terraform-state-rexben"
     key    = "ecr-terraform.tfstate"
-    region = "us-east-1"
+    region = "us-west-2"
   }
   required_providers {
     aws = {
@@ -12,7 +12,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-2"
 }
 
 resource "aws_ecr_repository" "devopsthehardway-ecr-repo" {
